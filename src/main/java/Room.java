@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Room {
+public  abstract class Room {
 
     private ArrayList<Guest> guests;
 
@@ -21,4 +21,6 @@ public class Room {
         guests.remove(guest);
         return guest;
     }
+
+    public abstract RoomType getRoomType();
 }
