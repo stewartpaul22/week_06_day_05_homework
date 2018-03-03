@@ -31,4 +31,8 @@ public  abstract class Room {
     }
 
     public abstract RoomType getRoomType();
+
+    public double getNightlyRate() {
+        return this.getRoomType().getNightlyRate();
+    }
 }

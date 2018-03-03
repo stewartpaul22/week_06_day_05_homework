@@ -19,7 +19,7 @@ public class BedroomTest {
         guest2 = new Guest("Les Dennis");
         guest3 = new Guest("Cathy Newman");
         guests = new ArrayList<>();
-        doubleBedroom = new Bedroom(guests, RoomType.DOUBLE);
+        doubleBedroom = new Bedroom(guests, RoomType.DOUBLE, 101);
     }
 
     @Test
@@ -33,7 +33,7 @@ public class BedroomTest {
         doubleBedroom.checkInGuest(guest1);
         doubleBedroom.checkInGuest(guest2);
         doubleBedroom.checkInGuest(guest3);
-        assertEquals(2, doubleBedroom.getGuestCount());
+        assertEquals(doubleBedroom.getRoomType().getCapacity(), doubleBedroom.getGuestCount());
     }
 
     @Test
@@ -52,6 +52,16 @@ public class BedroomTest {
     @Test
     public void checkRoomHasType() {
         assertEquals(RoomType.DOUBLE, doubleBedroom.getRoomType());
+    }
+
+    @Test
+    public void hasRoomNumber() {
+        assertEquals(101, doubleBedroom.getRoomNumber());
+    }
+
+    @Test
+    public void hasNightlyRate() {
+        assertEquals(65.00, doubleBedroom.getNightlyRate(), 0.01);
     }
 
 }

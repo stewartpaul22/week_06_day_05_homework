@@ -3,10 +3,12 @@ import java.util.ArrayList;
 public class Bedroom extends Room {
 
     private RoomType roomType;
+    private int roomNumber;
 
-    public Bedroom(ArrayList<Guest> guests, RoomType roomType) {
+    public Bedroom(ArrayList<Guest> guests, RoomType roomType, int roomNumber) {
         super(guests);
         this.roomType = roomType;
+        this.roomNumber = roomNumber;
     }
 
     @Override
@@ -14,6 +16,7 @@ public class Bedroom extends Room {
         return this.roomType;
     }
 
-    // ensure that room capacity cannot be exceeded
-
+    public int getRoomNumber() {
+        return this.roomNumber;
+    }
 }
