@@ -12,14 +12,22 @@ public  abstract class Room {
         return this.guests.size();
     }
 
-    public Guest checkInGuest(Guest guest) {
-        guests.add(guest);
-        return guest;
+    public String checkInGuest(Guest guest) {
+        if (this.getGuestCount() < this.getRoomType().getCapacity()) {
+            guests.add(guest);
+        } else {
+            return "Room is full";
+        }
+        return "Guest checked in successfully";
     }
 
-    public Guest checkOutGuest(Guest guest) {
-        guests.remove(guest);
-        return guest;
+    public String checkOutGuest(Guest guest) {
+        if (this.getGuestCount() > 0) {
+            guests.remove(guest);
+        } else {
+            return "The room is empty of guests";
+        }
+        return "Guest checked out successfully";
     }
 
     public abstract RoomType getRoomType();

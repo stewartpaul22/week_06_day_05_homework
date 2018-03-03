@@ -13,4 +13,7 @@ public class Bedroom extends Room {
     public RoomType getRoomType() {
         return this.roomType;
     }
+
+    // ensure that room capacity cannot be exceeded
+
 }
