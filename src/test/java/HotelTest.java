@@ -48,14 +48,27 @@ public class HotelTest {
     public void canCheckGuestIntoDoubleBedroom() {
         hotel.checkInGuest(guest1, doubleRoom);
         assertEquals(1, hotel.getRoomGuestCount(doubleRoom));
-        //assertEquals("Jim Morrison", hotel.getGuestName(doubleRoom));
     }
 
-    // test that room capacity cannot be exceeded
+    @Test
+    public void cannnotExceedRoomCapacity() {
+        hotel.checkInGuest(guest1, singleRoom);
+        hotel.checkInGuest(guest2, singleRoom);
+        assertEquals(1, singleRoom.getGuestCount());
+    }
 
-    // test that guest count cannot be made negative by attempting to remove guest
+    @Test
+    public void cannotCheckOutEmptyRoomj() {
+        hotel.checkOutGuest(guest1, doubleRoom);
+        assertEquals(0, doubleRoom.getGuestCount());
+    }
 
-    // test that guest can be checked out of room
+    @Test
+    public void canCheckGuestOutDoubleBedroom() {
+        hotel.checkInGuest(guest1, doubleRoom);
+        hotel.checkOutGuest(guest1, doubleRoom);
+    }
+
 
     // test that a guests name can be retrieved from a given room using room number
 
