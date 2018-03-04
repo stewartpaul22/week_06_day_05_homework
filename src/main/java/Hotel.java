@@ -27,6 +27,11 @@ public class Hotel {
         room.checkOutGuest(guest);
     }
 
+    public ArrayList<Guest> getGuestList(Room room) {
+        ArrayList<Guest> guests = room.getGuestList(room);
+        return guests;
+    }
+
 
     // hotel can check which guests, if any, are checked into a particular room
 

@@ -3,6 +3,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class HotelTest {
@@ -24,7 +25,7 @@ public class HotelTest {
     @Before
     public void before() {
         guest1 = new Guest("Jim Morrison");
-        guest2 = new Guest("Bob Dylan");
+        guest2 = new Guest("Jimi Hendrix");
         guests = new ArrayList<>();
         doubleRoom = new Bedroom(guests, RoomType.DOUBLE, 101);
         singleRoom = new Bedroom(guests, RoomType.SINGLE, 103);
@@ -66,11 +67,31 @@ public class HotelTest {
     @Test
     public void canCheckGuestOutDoubleBedroom() {
         hotel.checkInGuest(guest1, doubleRoom);
+        hotel.checkInGuest(guest2, doubleRoom);
         hotel.checkOutGuest(guest1, doubleRoom);
+        hotel.checkOutGuest(guest2, doubleRoom);
+        assertEquals(0, doubleRoom.getGuestCount());
+    }
+
+    @Test
+    public void canGetGuestListForRoom_hasGuests() {
+        hotel.checkInGuest(guest1, doubleRoom);
+        hotel.checkInGuest(guest2, doubleRoom);
+        ArrayList<Guest> testList = new ArrayList<>();
+        testList.add(guest1);
+        testList.add(guest2);
+        ArrayList<Guest> guestList = hotel.getGuestList(doubleRoom);
+        assertEquals(testList, guestList);
+    }
+
+    @Test
+    public void canGetGuestListForRoom_noGuests() {
+        ArrayList<Guest> testList = new ArrayList<>();
+        ArrayList<Guest> guestList = hotel.getGuestList(doubleRoom);
+        assertEquals(testList, guestList);
     }
 
 
-    // test that a guests name can be retrieved from a given room using room number
 
     // test that returns a list of vacant rooms i.e. where room count == 0
 

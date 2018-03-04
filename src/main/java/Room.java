@@ -39,4 +39,13 @@ public  abstract class Room {
     public double getHourlyRate() {
         return this.getRoomType().getHourlyRate();
     }
+
+    public ArrayList<Guest> getGuestList(Room room) {
+        ArrayList<Guest> roomList = new ArrayList<>();
+        for (Guest guest : guests) {
+            roomList.add(guest);
+        }
+
+        return roomList;
+    }
 }
