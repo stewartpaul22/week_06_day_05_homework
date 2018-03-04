@@ -51,4 +51,16 @@ public class HotelTest {
         //assertEquals("Jim Morrison", hotel.getGuestName(doubleRoom));
     }
 
+    // test that room capacity cannot be exceeded
+
+    // test that guest count cannot be made negative by attempting to remove guest
+
+    // test that guest can be checked out of room
+
+    // test that a guests name can be retrieved from a given room using room number
+
+    // test that returns a list of vacant rooms i.e. where room count == 0
+
+    // test that guest can be checked in for a number of nights
+
 }
