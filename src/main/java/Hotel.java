@@ -14,7 +14,16 @@ public class Hotel {
         this.diningRooms = diningRooms;
     }
 
-    // hotel can check guests in/out of rooms
+    public void checkInGuest(Guest guest, Room room)   {
+        room.checkInGuest(guest);
+    }
+
+    public int getRoomGuestCount(Bedroom room) {
+        return room.getGuestCount();
+    }
+
+
+
 
     // hotel can check which guests, if any, are checked into a particular room
 
