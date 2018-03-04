@@ -24,29 +24,35 @@ public class BedroomTest {
 
     @Test
     public void canCheckInGuest() {
-        doubleBedroom.checkInGuest(guest1);
+        String result = doubleBedroom.checkInGuest(guest1);
         assertEquals(1, doubleBedroom.getGuestCount());
+        assertEquals("Guest checked in successfully", result);
     }
 
     @Test
     public void cannotExceedRoomCapacity () {
-        doubleBedroom.checkInGuest(guest1);
-        doubleBedroom.checkInGuest(guest2);
-        doubleBedroom.checkInGuest(guest3);
+        String result1 = doubleBedroom.checkInGuest(guest1);
+        String result2 = doubleBedroom.checkInGuest(guest2);
+        String result3 = doubleBedroom.checkInGuest(guest3);
         assertEquals(doubleBedroom.getRoomType().getCapacity(), doubleBedroom.getGuestCount());
+        assertEquals("Guest checked in successfully", result1);
+        assertEquals("Guest checked in successfully", result2);
+        assertEquals("Room is full", result3);
     }
 
     @Test
     public void cannotCheckOutEmptyRoom () {
-        doubleBedroom.checkOutGuest(guest1);
+        String result = doubleBedroom.checkOutGuest(guest1);
         assertEquals(0, doubleBedroom.getGuestCount());
+        assertEquals("The room is empty of guests", result);
     }
 
     @Test
     public void canCheckOutGuest() {
         doubleBedroom.checkInGuest(guest1);
-        doubleBedroom.checkOutGuest(guest1);
+        String result = doubleBedroom.checkOutGuest(guest1);
         assertEquals(0, doubleBedroom.getGuestCount());
+        assertEquals("Guest checked out successfully", result);
     }
 
     @Test
@@ -62,6 +68,11 @@ public class BedroomTest {
     @Test
     public void hasNightlyRate() {
         assertEquals(65.00, doubleBedroom.getNightlyRate(), 0.01);
+    }
+
+    @Test
+    public void hasHourlyRate() {
+        assertEquals(0.00, doubleBedroom.getHourlyRate(), 0.01);
     }
 
 }

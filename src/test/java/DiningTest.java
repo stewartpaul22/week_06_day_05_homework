@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
-public class ConferenceTest {
+public class DiningTest {
 
-    private Conference conferenceLarge;
+    private Dining diningSmall;
     private Guest guest1;
     private ArrayList<Guest> guests;
 
@@ -15,13 +15,13 @@ public class ConferenceTest {
     public void before() {
         guest1 = new Guest("Bob Carolgees");
         guests = new ArrayList<>();
-        conferenceLarge = new Conference(guests, RoomType.CONFERENCE_LARGE, "The Big Hall");
+        diningSmall = new Dining(guests, RoomType.DINING_SMALL, "The Wee Kitchen");
     }
 
     @Test
     public void canCheckInGuest() {
-        String result = conferenceLarge.checkInGuest(guest1);
-        assertEquals(1, conferenceLarge.getGuestCount());
+        String result = diningSmall.checkInGuest(guest1);
+        assertEquals(1, diningSmall.getGuestCount());
         assertEquals("Guest checked in successfully", result);
     }
 
@@ -29,47 +29,47 @@ public class ConferenceTest {
     public void cannotExceedRoomCapacity () {
         // check in 100 guests i.e. room capacity
         for (int i = 0; i < 100; i++) {
-            conferenceLarge.checkInGuest(guest1);
+            diningSmall.checkInGuest(guest1);
         }
         // attempt to check in one more guest
-        String result = conferenceLarge.checkInGuest(guest1);
-        assertEquals(conferenceLarge.getRoomType().getCapacity(), conferenceLarge.getGuestCount());
+        String result = diningSmall.checkInGuest(guest1);
+        assertEquals(diningSmall.getRoomType().getCapacity(), diningSmall.getGuestCount());
         assertEquals("Room is full", result);
     }
 
     @Test
     public void cannotCheckOutEmptyRoom () {
-        String result = conferenceLarge.checkOutGuest(guest1);
-        assertEquals(0, conferenceLarge.getGuestCount());
+        String result = diningSmall.checkOutGuest(guest1);
+        assertEquals(0, diningSmall.getGuestCount());
         assertEquals("The room is empty of guests", result);
     }
 
     @Test
     public void canCheckOutGuest() {
-        conferenceLarge.checkInGuest(guest1);
-        String result = conferenceLarge.checkOutGuest(guest1);
-        assertEquals(0, conferenceLarge.getGuestCount());
+        diningSmall.checkInGuest(guest1);
+        String result = diningSmall.checkOutGuest(guest1);
+        assertEquals(0, diningSmall.getGuestCount());
         assertEquals("Guest checked out successfully", result);
     }
 
     @Test
     public void checkRoomHasType() {
-        assertEquals(RoomType.CONFERENCE_LARGE, conferenceLarge.getRoomType());
+        assertEquals(RoomType.DINING_SMALL, diningSmall.getRoomType());
     }
 
     @Test
     public void hasRoomName() {
-        assertEquals("The Big Hall", conferenceLarge.getRoomName());
+        assertEquals("The Wee Kitchen", diningSmall.getRoomName());
     }
 
     @Test
     public void hasHourlyRate() {
-        assertEquals(400.00, conferenceLarge.getHourlyRate(), 0.01);
+        assertEquals(0.00, diningSmall.getHourlyRate(), 0.01);
     }
 
     @Test
     public void hasNightlyRate() {
-        assertEquals(0.00, conferenceLarge.getNightlyRate(), 0.01);
+        assertEquals(0.00, diningSmall.getNightlyRate(), 0.01);
     }
 
 }
