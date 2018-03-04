@@ -2,11 +2,13 @@ import java.util.ArrayList;
 
 public class Hotel {
 
+    private String name;
     private ArrayList<Bedroom> bedrooms;
     private ArrayList<Conference> conferenceRooms;
     private ArrayList<Dining> diningRooms;
 
-    public Hotel(ArrayList<Bedroom> bedrooms, ArrayList<Conference> conferenceRooms, ArrayList<Dining> diningRooms) {
+    public Hotel(String name, ArrayList<Bedroom> bedrooms, ArrayList<Conference> conferenceRooms, ArrayList<Dining> diningRooms) {
+        this.name = name;
         this.bedrooms = bedrooms;
         this.conferenceRooms = conferenceRooms;
         this.diningRooms = diningRooms;
