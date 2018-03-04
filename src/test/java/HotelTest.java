@@ -74,7 +74,7 @@ public class HotelTest {
     }
 
     @Test
-    public void canGetGuestListForRoom_hasGuests() {
+    public void canGetGuestListForRoom__hasGuests() {
         hotel.checkInGuest(guest1, doubleRoom);
         hotel.checkInGuest(guest2, doubleRoom);
         ArrayList<Guest> testList = new ArrayList<>();
@@ -85,15 +85,17 @@ public class HotelTest {
     }
 
     @Test
-    public void canGetGuestListForRoom_noGuests() {
+    public void canGetGuestListForRoom__noGuests() {
         ArrayList<Guest> testList = new ArrayList<>();
         ArrayList<Guest> guestList = hotel.getGuestList(doubleRoom);
         assertEquals(testList, guestList);
     }
 
-
-
-    // test that returns a list of vacant rooms i.e. where room count == 0
+    @Test
+    public void canGetListOfVacantRooms__allVacant() {
+        ArrayList<Bedroom> vacantRooms = hotel.getVacantRooms();
+        assertEquals(bedrooms, vacantRooms);
+    }
 
     // test that guest can be checked in for a number of nights
 

@@ -33,9 +33,20 @@ public class Hotel {
     }
 
 
-    // hotel can check which guests, if any, are checked into a particular room
+    // ***** Extensions *****
 
     // hotel can see a list of vacant bedrooms
+    public ArrayList<Bedroom> getVacantRooms() {
+        ArrayList<Bedroom> vacantRooms = new ArrayList<>();
+
+        for (Bedroom room : bedrooms) {
+            if (room.getGuestCount() == 0) {
+                vacantRooms.add(room);
+            }
+        }
+
+        return vacantRooms;
+    }
 
     // hotel can check in guests to bedrooms for a number of nights
 
